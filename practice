@@ -1,16 +1,23 @@
 #include <iostream>
 using namespace std;
-const int size = 10;
+const int arraysize = 10;
 int searchArray(double array[], double key) {
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < arraysize; i++)
         if (array[i] == key) return i;
-    return -1;}
+    return -1;
+}
 int main() {
-    double array[size], key;
-    cout << "Enter " << size << " values:\n";
-    for (double &value : array) cin >> value;
+    double array[arraysize], key;
+    cout << "Enter " << arraysize << " values:\n";
+    for (double& value : array) cin >> value;
     cout << "Search for: ";
     cin >> key;
     int result = searchArray(array, key);
-    cout << (result != -1 ? "Found at index: " + to_string(result) : "Not Found") << endl;
-    return 0;}
+    if (result != -1) {
+        cout << "Found at index: " << result << endl;
+    }
+    else {
+        cout << "Not Found" << endl;
+    }
+    return 0;
+}
