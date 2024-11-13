@@ -1,23 +1,19 @@
 #include <iostream>
 using namespace std;
-const int arraysize = 10;
-int searchArray(double array[], double key) {
-    for (int i = 0; i < arraysize; i++)
-        if (array[i] == key) return i;
-    return -1;
+bool isPrime(int num) {
+    if (num <= 1) return false;
+    for (int i = 2; i * i <= num; ++i) {
+        if (num % i == 0) return false;
+    }
+    return true;
 }
 int main() {
-    double array[arraysize], key;
-    cout << "Enter " << arraysize << " values:\n";
-    for (double& value : array) cin >> value;
-    cout << "Search for: ";
-    cin >> key;
-    int result = searchArray(array, key);
-    if (result != -1) {
-        cout << "Found at index: " << result << endl;
+    int A[10], primeCount = 0;
+    cout << "Enter 10 integers: ";
+    for (int i = 0; i < 10; ++i) {
+        cin >> A[i];
+        if (isPrime(A[i])) ++primeCount;
     }
-    else {
-        cout << "Not Found" << endl;
-    }
+    cout << "Number of prime numbers in the array: " << primeCount << endl;
     return 0;
 }
